@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('desa2_pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->integer('Jumlah_L');
+            $table->integer('Jumlah_P');
+            $table->timestamp('periode');
         });
     }
 

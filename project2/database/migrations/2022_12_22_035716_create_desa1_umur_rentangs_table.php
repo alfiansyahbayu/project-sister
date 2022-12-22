@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('desa1_umur_rentangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('Pria');
-            $table->integer('Wanita');
+            $table->integer('Jumlah_L');
+            $table->integer('Jumlah_P');
+            $table->timestamp('periode');
         });
     }
 
