@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 /*
@@ -33,29 +34,17 @@ Route::get('/umur', function () {
     return view('umur');
 });
 
-Route::get('/pekerjaanwakanda', function () {
-    return view('pekerjaanwakanda');
-});
+Route::get('/pekerjaanwakanda', [DataController::class, 'tampilpekerjaan2']);
 
-Route::get('/pekerjaankonoha', function () {
-    return view('pekerjaankonoha');
-});
+Route::get('/pekerjaankonoha', [DataController::class, 'tampilpekerjaan']);
 
-Route::get('/umurwakanda', function () {
-    return view('umurwakanda');
-});
+Route::get('/umurwakanda', [DataController::class, 'tampilumur2']);
 
-Route::get('/umurkonoha', function () {
-    return view('umurkonoha');
-});
+Route::get('/umurkonoha', [DataController::class, 'tampilumur']);
 
-Route::get('/hubunganwakanda', function () {
-    return view('hubunganwakanda');
-});
+Route::get('/hubunganwakanda', [DataController::class, 'tampilhubungan2']);
 
-Route::get('/hubungankonoha', function () {
-    return view('hubungankonoha');
-});
+Route::get('/hubungankonoha', [DataController::class, 'tampilhubungan']);
 
 
 
@@ -65,4 +54,3 @@ Route::get('/hubungankonoha', function () {
 Route::get('/sessions', [SessionController::class, 'index']);
 Route::post('/sessions/login', [SessionController::class, 'login']);
 Route::get('/sessions/logout', [SessionController::class, 'logout']);
-

@@ -3,24 +3,6 @@
 
 @section('isi')
 
-<script>
-    fetch("http://127.0.0.1:8080/api/v1/hubungan").then((data) => {
-        //console.log(data);
-        return data.json();
-    }).then((objectData) => {
-        console.log(objectData.data[0].nama);
-        let tableData = "";
-        objectData.data.map((values) => {
-            tableData += `<tr>
-                            <td>${values.nama}</td>
-                            <td>${values.Jumlah_L}</td>
-                            <td>${values.Jumlah_P}</td>
-                        </tr>`;
-        });
-        document.getElementById("table_body").innerHTML = tableData;
-    })
-</script>
-
 <div class=" container-fluid  border " style="min-height: 800px">
     <div class="d-flex table-responsive mx-auto justify-content-center" style="padding: 100px">
         <div class="row">
@@ -28,11 +10,11 @@
                 <h5>Daftar Hubungan Desa Konoha</h5>
                 <div class="dropdown">
                     <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Pilih Desa 
+                        Pilih Desa
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="/hubungankonoha">Desa Konoha</a></li>
-                    <li><a class="dropdown-item" href="/hubunganwakanda">Desa Wakanda</a></li>
+                        <li><a class="dropdown-item" href="/hubungankonoha">Desa Konoha</a></li>
+                        <li><a class="dropdown-item" href="/hubunganwakanda">Desa Wakanda</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +25,16 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Pria</th>
                             <th scope="col">Wanita</th>
+                            <th scope="col">Periode</th>
                         </tr>
+                        @foreach($hubungan as $h)
+                        <tr>
+                            <td>{{$h->nama}}</td>
+                            <td>{{$h->Jumlah_L}}</td>
+                            <td>{{$h->Jumlah_P}}</td>
+                            <td>{{$h->periode}}</td>
+                        </tr>
+                        @endforeach
                     </thead>
                     <tbody id="table_body">
 

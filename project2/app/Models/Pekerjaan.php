@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pekerjaan extends Model
 {
     protected $fillable = [
-        'nama', 'Pria', 'Wanita'
-    ];
-    protected $casts = [
-        'periode' => 'yyyy:mm:dd'
+        'nama', 'Pria', 'Wanita', 'periode'
     ];
 }

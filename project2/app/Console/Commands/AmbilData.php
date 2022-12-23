@@ -45,72 +45,39 @@ class AmbilData extends Command
                 $url = $desa->url_desa . $api->path_api;
                 $data = file_get_contents($url);
                 $data_baru = json_decode($data, true);
-                if ($desa->nama == 'desa1' and $api->id == 1) {
+                if ($api->id == 1) {
                     $a = count($data_baru['data']);
                     for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa1_pekerjaans')->insert(
+                        DB::table('pekerjaans')->insert(
                             [
                                 'nama' => $data_baru['data'][$i]['nama'],
+                                'Id_desa' => $desa->id,
                                 'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
                                 'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
                                 'periode' => Carbon::now()->format('Y-m-d H:i:s'),
                             ]
                         );
                     }
-                } elseif ($desa->nama == 'desa1' and $api->id == 2) {
+                } elseif ($api->id == 2) {
                     $a = count($data_baru['data']);
                     for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa1_hubungans')->insert(
+                        DB::table('hubungans')->insert(
                             [
                                 'nama' => $data_baru['data'][$i]['nama'],
+                                'Id_desa' => $desa->id,
                                 'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
                                 'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
                                 'periode' => Carbon::now()->format('Y-m-d H:i:s'),
                             ]
                         );
                     }
-                } elseif ($desa->nama == 'desa1' and $api->id == 3) {
+                } elseif ($api->id == 3) {
                     $a = count($data_baru['data']);
                     for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa1_umur_rentangs')->insert(
+                        DB::table('umur_rentangs')->insert(
                             [
                                 'nama' => $data_baru['data'][$i]['nama'],
-                                'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
-                                'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
-                                'periode' => Carbon::now()->format('Y-m-d H:i:s'),
-                            ]
-                        );
-                    }
-                } elseif ($desa->nama == 'desa2' and $api->id == 1) {
-                    $a = count($data_baru['data']);
-                    for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa2_pekerjaans')->insert(
-                            [
-                                'nama' => $data_baru['data'][$i]['nama'],
-                                'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
-                                'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
-                                'periode' => Carbon::now()->format('Y-m-d H:i:s'),
-                            ]
-                        );
-                    }
-                } elseif ($desa->nama == 'desa2' and $api->id == 2) {
-                    $a = count($data_baru['data']);
-                    for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa2_hubungans')->insert(
-                            [
-                                'nama' => $data_baru['data'][$i]['nama'],
-                                'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
-                                'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
-                                'periode' => Carbon::now()->format('Y-m-d H:i:s'),
-                            ]
-                        );
-                    }
-                } elseif ($desa->nama == 'desa2' and $api->id == 3) {
-                    $a = count($data_baru['data']);
-                    for ($i = 0; $i <= $a - 1; $i++) {
-                        DB::table('desa2_umur_rentangs')->insert(
-                            [
-                                'nama' => $data_baru['data'][$i]['nama'],
+                                'Id_desa' => $desa->id,
                                 'Jumlah_L' => $data_baru['data'][$i]['Jumlah_L'],
                                 'Jumlah_P' => $data_baru['data'][$i]['Jumlah_P'],
                                 'periode' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -120,5 +87,6 @@ class AmbilData extends Command
                 }
             }
         }
+        $this->info('Data Berhasil Diambil dan disimpan');
     }
 }
